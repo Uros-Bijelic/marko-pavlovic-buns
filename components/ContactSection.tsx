@@ -1,28 +1,18 @@
-"use client";
+'use client';
 
-import { useState, type FormEvent } from "react";
-import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
-import FadeIn from "./FadeIn";
+import { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/data/translations';
+import FadeIn from './FadeIn';
+import { sendEmail } from '@/actions/send-email';
 
 export default function ContactSection() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-
-  function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-
-    const subject = encodeURIComponent(`${t.contact.form.subjectPrefix} ${name}`);
-    const body = encodeURIComponent(
-      `${t.contact.form.name}: ${name}\n${t.contact.form.email}: ${email}\n\n${message}`,
-    );
-
-    window.location.href = `mailto:marko.pavlovic328@gmail.com?subject=${subject}&body=${body}`;
-  }
+  const [subject, setSubject] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   return (
     <section className="bg-amber-50 px-6 py-20 sm:px-10 lg:px-24">
@@ -34,32 +24,20 @@ export default function ContactSection() {
 
       <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2">
         <FadeIn direction="left">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form
+            onSubmit={() => sendEmail({ email, subject, message })}
+            className="space-y-4"
+          >
             <div>
               <label
-                htmlFor="contact-name"
-                className="mb-1 block text-sm font-medium text-amber-900"
-              >
-                {t.contact.form.name}
-              </label>
-              <input
-                id="contact-name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-lg border border-amber-200 bg-white px-4 py-2 text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="contact-email"
+                htmlFor="email"
                 className="mb-1 block text-sm font-medium text-amber-900"
               >
                 {t.contact.form.email}
               </label>
               <input
-                id="contact-email"
+                id="email"
+                name="email"
                 required
                 type="email"
                 value={email}
@@ -70,13 +48,31 @@ export default function ContactSection() {
 
             <div>
               <label
-                htmlFor="contact-message"
+                htmlFor="subject"
+                className="mb-1 block text-sm font-medium text-amber-900"
+              >
+                {t.contact.form.subject}
+              </label>
+              <input
+                id="subject"
+                name="subject"
+                required
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                className="w-full rounded-lg border border-amber-200 bg-white px-4 py-2 text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
                 className="mb-1 block text-sm font-medium text-amber-900"
               >
                 {t.contact.form.message}
               </label>
               <textarea
-                id="contact-message"
+                id="message"
+                name="message"
                 required
                 rows={5}
                 value={message}
@@ -100,13 +96,11 @@ export default function ContactSection() {
 
           <div className="space-y-2 pt-4">
             <p className="text-amber-900">
-              <span className="font-semibold">{t.contact.emailLabel}:</span>{" "}
-              <a href="mailto:marko.pavlovic328@gmail.com" className="hover:text-amber-600">
-                marko.pavlovic328@gmail.com
-              </a>
+              <span className="font-semibold">{t.contact.emailLabel}:</span>{' '}
+              <span className="hover:text-amber-600">info&#64;buns.rs</span>
             </p>
             <p className="text-amber-900">
-              <span className="font-semibold">{t.contact.phoneLabel}:</span>{" "}
+              <span className="font-semibold">{t.contact.phoneLabel}:</span>{' '}
               <a href="tel:+381641291292" className="hover:text-amber-600">
                 +381 64 129 1292
               </a>
