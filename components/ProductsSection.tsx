@@ -1,12 +1,11 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useLanguage } from "@/context/LanguageContext";
-import { translations } from "@/data/translations";
-// import { buns } from "@/data/buns";
+import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/data/translations';
 
-import FadeIn from "./FadeIn";
-import { buns } from "./buns";
+import FadeIn from './FadeIn';
+import { buns } from '../data/buns';
 
 export default function ProductsSection() {
   const { language } = useLanguage();
@@ -27,28 +26,27 @@ export default function ProductsSection() {
           return (
             <div
               key={bun.id}
-              className={`flex flex-col gap-8 md:flex-row md:items-center border-5 border-blue-500 ${
-                imageOnLeft ? "" : "md:flex-row-reverse"
+              className={`flex flex-col gap-8 md:flex-row md:items-center ${
+                imageOnLeft ? '' : 'md:flex-row-reverse'
               }`}
             >
               <FadeIn
-                direction={imageOnLeft ? "left" : "right"}
-                className="flex-1 border-3 border-red-200"
+                direction={imageOnLeft ? 'left' : 'right'}
+                className="flex-1"
               >
-                {/* <div className="relative aspect-4/3 overflow-hidden rounded-2xl shadow-lg"> */}
-                <Image
-                  width={200}
-                  height={100}
-                  src={bun.image}
-                  alt={bun.title[language]}
-                  // fill
-                  className="rounded-full"
-                />
-                {/* </div> */}
+                <div className="relative aspect-4/3 overflow-hidden rounded-2xl bg-amber-100 shadow-lg">
+                  <Image
+                    src={bun.image}
+                    alt={bun.title[language]}
+                    fill
+                    sizes="(min-width: 768px) 40vw, 90vw"
+                    className="object-cover"
+                  />
+                </div>
               </FadeIn>
 
               <FadeIn
-                direction={imageOnLeft ? "right" : "left"}
+                direction={imageOnLeft ? 'right' : 'left'}
                 className="flex-1"
               >
                 <h3 className="mb-2 text-2xl font-bold text-amber-900">
