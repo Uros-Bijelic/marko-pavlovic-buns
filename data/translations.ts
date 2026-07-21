@@ -5,6 +5,9 @@ export const translations: Record<
   {
     nav: {
       toggleAriaLabel: string;
+      products: string;
+      about: string;
+      contact: string;
     };
     about: {
       title: string;
@@ -17,7 +20,8 @@ export const translations: Record<
       paragraphs: string[];
     };
     products: {
-      title: string;
+      tagline: string;
+      subtitle: string;
       note: string;
     };
     contact: {
@@ -26,12 +30,14 @@ export const translations: Record<
       body: string;
       emailLabel: string;
       phoneLabel: string;
+      instagramLink: string;
+      toastSuccessMessage: string;
+      toastErrorMessage: string;
       form: {
         subject: string;
         email: string;
         message: string;
         submit: string;
-        subjectPrefix: string;
       };
     };
   }
@@ -39,6 +45,9 @@ export const translations: Record<
   sr: {
     nav: {
       toggleAriaLabel: 'Promeni jezik',
+      products: 'Proizvodi',
+      about: 'O nama',
+      contact: 'Kontakt',
     },
     about: {
       title: 'Šta je Buns.',
@@ -59,7 +68,8 @@ export const translations: Record<
       ],
     },
     products: {
-      title: 'Proizvodi',
+      tagline: 'više od zemičke',
+      subtitle: 'Premium peciva za burger & sendvič majstore.',
       note: '*Svaki od proizvoda je moguće personalizovati po želji kupca posipom i/ili utisnutim žigom (logom).',
     },
     contact: {
@@ -69,18 +79,23 @@ export const translations: Record<
       body: 'Kontaktirajte nas putem e-maila ili telefona, a mi ćemo vam odgovoriti u najkraćem mogućem roku.',
       emailLabel: 'E-mail',
       phoneLabel: 'Telefon',
+      instagramLink: 'https://www.instagram.com/buns.rs/',
+      toastSuccessMessage: 'Poruka je uspešno poslata',
+      toastErrorMessage: 'Poruka nije poslata.',
       form: {
         subject: 'Naslov',
         email: 'E-mail',
         message: 'Poruka',
         submit: 'Pošalji poruku',
-        subjectPrefix: 'Upit sa sajta od',
       },
     },
   },
   en: {
     nav: {
       toggleAriaLabel: 'Toggle language',
+      products: 'Products',
+      about: 'About',
+      contact: 'Contact',
     },
     about: {
       title: 'What is Buns.',
@@ -101,7 +116,8 @@ export const translations: Record<
       ],
     },
     products: {
-      title: 'Products',
+      tagline: 'beyond the bun',
+      subtitle: 'Premium buns for burger & sandwich craftsmen.',
       note: "*Every product can be personalized to the customer's wishes with toppings and/or an embossed stamp (logo).",
     },
     contact: {
@@ -111,12 +127,14 @@ export const translations: Record<
       body: "Contact us by email or phone, and we'll get back to you as soon as possible.",
       emailLabel: 'Email',
       phoneLabel: 'Phone',
+      instagramLink: 'https://www.instagram.com/buns.rs/',
+      toastSuccessMessage: 'Message sent successfully.',
+      toastErrorMessage: 'Message failed to send.',
       form: {
         subject: 'Subject',
         email: 'Email',
         message: 'Message',
         submit: 'Send message',
-        subjectPrefix: 'Website inquiry from',
       },
     },
   },

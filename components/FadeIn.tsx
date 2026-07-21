@@ -5,9 +5,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 type Direction = "up" | "left" | "right";
 
 const hiddenTransform: Record<Direction, string> = {
-  up: "translate-y-8",
-  left: "-translate-x-16",
-  right: "translate-x-16",
+  up: "translate-y-6",
+  left: "-translate-x-8",
+  right: "translate-x-8",
 };
 
 export default function FadeIn({
@@ -46,7 +46,7 @@ export default function FadeIn({
     <div
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-all duration-700 ease-out ${
+      className={`transition-all duration-1000 ease-out ${
         visible
           ? "translate-x-0 translate-y-0 opacity-100"
           : `opacity-0 ${hiddenTransform[direction]}`

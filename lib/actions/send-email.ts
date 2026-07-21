@@ -16,12 +16,22 @@ export const sendEmail = async ({
   message,
 }: ContactFormData) => {
   try {
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: `Buns.rs <info@buns.rs>`,
       to: ['info@buns.rs'],
       subject,
       text: message,
       replyTo: email,
     });
-  } catch (err) {}
+
+    if (error) {
+      console.error('sendEmail: Resend returned an error', error);
+      return { success: false };
+    }
+
+    return { success: true };
+  } catch (err) {
+    console.error('sendEmail: unexpected error', err);
+    return { success: false };
+  }
 };
