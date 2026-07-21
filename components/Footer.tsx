@@ -15,6 +15,7 @@ export default function Footer() {
             <a
               className="relative text-inherit after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
               href="https://www.urosbijelic.com/"
+              target="_blanck"
             >
               www.urosbijelic.com
             </a>

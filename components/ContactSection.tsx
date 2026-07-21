@@ -87,7 +87,7 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="mt-2 bg-black px-8 py-3 text-xs font-semibold tracking-widest text-white uppercase transition-colors hover:bg-black/80"
+                className="mt-2 bg-black px-8 py-3 text-xs font-semibold tracking-widest text-white uppercase transition-colors hover:bg-black/80 cursor-pointer"
               >
                 {t.contact.form.submit}
               </button>
@@ -110,6 +110,34 @@ export default function ContactSection() {
                   className="relative after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
                 >
                   +381 64 129 1292
+                </a>
+              </p>
+              <p className="text-black flex ga">
+                <a
+                  href={translations.en.contact.instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-black transition-opacity hover:opacity-60"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle
+                      cx="17.5"
+                      cy="6.5"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
                 </a>
               </p>
             </div>

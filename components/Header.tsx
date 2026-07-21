@@ -78,24 +78,53 @@ export default function Header() {
           ))}
         </nav>
 
-        <button
-          type="button"
-          onClick={toggleLanguage}
-          aria-label={t.nav.toggleAriaLabel}
-          className="text-xs font-semibold tracking-widest uppercase"
-        >
-          <span
-            className={`${language === 'sr' ? 'text-black' : 'text-black/35'} cursor-pointer`}
+        <div className="flex items-center gap-4">
+          <button
+            type="button"
+            onClick={toggleLanguage}
+            aria-label={t.nav.toggleAriaLabel}
+            className="text-xs font-semibold tracking-widest uppercase mt-0.5"
           >
-            SR
-          </span>
-          <span className="mx-1.5 text-black/25">/</span>
-          <span
-            className={`${language === 'en' ? 'text-black' : 'text-black/35'} cursor-pointer`}
+            <span
+              className={`${language === 'sr' ? 'text-black' : 'text-black/35'} cursor-pointer`}
+            >
+              SR
+            </span>
+            <span className="mx-1.5 text-black/25">/</span>
+            <span
+              className={`${language === 'en' ? 'text-black' : 'text-black/35'} cursor-pointer`}
+            >
+              EN
+            </span>
+          </button>
+
+          <a
+            href={translations.en.contact.instagramLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-black transition-opacity hover:opacity-60"
           >
-            EN
-          </span>
-        </button>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle
+                cx="17.5"
+                cy="6.5"
+                r="1"
+                fill="currentColor"
+                stroke="none"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
     </header>
   );

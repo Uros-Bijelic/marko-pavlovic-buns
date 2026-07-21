@@ -31,6 +31,7 @@ export const translations: Record<
       body: string;
       emailLabel: string;
       phoneLabel: string;
+      instagramLink: string;
       form: {
         subject: string;
         email: string;
@@ -79,6 +80,7 @@ export const translations: Record<
       body: 'Kontaktirajte nas putem e-maila ili telefona, a mi ćemo vam odgovoriti u najkraćem mogućem roku.',
       emailLabel: 'E-mail',
       phoneLabel: 'Telefon',
+      instagramLink: 'https://www.instagram.com/buns.rs/',
       form: {
         subject: 'Naslov',
         email: 'E-mail',
@@ -126,6 +128,7 @@ export const translations: Record<
       body: "Contact us by email or phone, and we'll get back to you as soon as possible.",
       emailLabel: 'Email',
       phoneLabel: 'Phone',
+      instagramLink: 'https://www.instagram.com/buns.rs/',
       form: {
         subject: 'Subject',
         email: 'Email',
