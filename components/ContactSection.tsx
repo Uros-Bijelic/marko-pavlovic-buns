@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { SubmitEventHandler, useState, useTransition } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/data/translations';
 import FadeIn from './FadeIn';
-import { sendEmail } from '@/actions/send-email';
+import InstagramLink from './InstagramLink';
+import { sendEmail } from '@/lib/actions/send-email';
+import { toast } from 'sonner';
 
 export default function ContactSection() {
   const { language } = useLanguage();
@@ -13,6 +15,24 @@ export default function ContactSection() {
   const [subject, setSubject] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isPending, startTransition] = useTransition();
+
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
+    startTransition(async () => {
+      const result = await sendEmail({ email, message, subject });
+
+      if (result.success) {
+        toast.success(t.contact.toastSuccessMessage);
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      } else {
+        toast.error(t.contact.toastErrorMessage);
+      }
+    });
+  };
 
   return (
     <section
@@ -28,10 +48,7 @@ export default function ContactSection() {
 
         <div className="mt-8 grid gap-8 sm:mt-12 sm:gap-10 md:mt-16 md:grid-cols-2 md:gap-16">
           <FadeIn>
-            <form
-              onSubmit={() => sendEmail({ email, subject, message })}
-              className="space-y-5"
-            >
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label
                   htmlFor="email"
@@ -87,8 +104,28 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="mt-2 bg-black px-8 py-3 text-xs font-semibold tracking-widest text-white uppercase transition-colors hover:bg-black/80 cursor-pointer"
+                className="mt-2 flex cursor-pointer items-center gap-3 bg-black px-8 py-3 text-xs font-semibold tracking-widest text-white uppercase transition-colors hover:bg-black/80 disabled:cursor-not-allowed disabled:opacity-70"
+                disabled={isPending}
               >
+                {isPending && (
+                  <svg
+                    aria-hidden="true"
+                    className="h-4 w-4 animate-spin text-white/30"
+                    viewBox="0 0 100 101"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                      fill="currentColor"
+                      className="text-white"
+                    />
+                  </svg>
+                )}
                 {t.contact.form.submit}
               </button>
             </form>
@@ -112,33 +149,8 @@ export default function ContactSection() {
                   +381 64 129 1292
                 </a>
               </p>
-              <p className="text-black flex ga">
-                <a
-                  href={translations.en.contact.instagramLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="text-black transition-opacity hover:opacity-60"
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle
-                      cx="17.5"
-                      cy="6.5"
-                      r="1"
-                      fill="currentColor"
-                      stroke="none"
-                    />
-                  </svg>
-                </a>
+              <p className="text-black">
+                <InstagramLink href={t.contact.instagramLink} />
               </p>
             </div>
           </FadeIn>

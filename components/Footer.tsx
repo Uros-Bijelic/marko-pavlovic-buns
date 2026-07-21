@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 export default function Footer() {
   return (
     <footer className="border-t border-black/10 bg-white">
@@ -10,12 +8,13 @@ export default function Footer() {
           Stack Engineer{' '}
         </p>
         <div className="text-black">
-          <p className="">urosbijelic90&#64;gmail.com</p>
+          <p>urosbijelic90&#64;gmail.com</p>
           <p>
             <a
               className="relative text-inherit after:absolute after:left-0 after:-bottom-0.5 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"
               href="https://www.urosbijelic.com/"
-              target="_blanck"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               www.urosbijelic.com
             </a>

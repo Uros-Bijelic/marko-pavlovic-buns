@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/data/translations';
+import InstagramLink from './InstagramLink';
 
 export default function Header() {
   const { language, toggleLanguage } = useLanguage();
@@ -98,32 +99,7 @@ export default function Header() {
             </span>
           </button>
 
-          <a
-            href={translations.en.contact.instagramLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="text-black transition-opacity hover:opacity-60"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="4" />
-              <circle
-                cx="17.5"
-                cy="6.5"
-                r="1"
-                fill="currentColor"
-                stroke="none"
-              />
-            </svg>
-          </a>
+          <InstagramLink href={t.contact.instagramLink} />
         </div>
       </div>
     </header>

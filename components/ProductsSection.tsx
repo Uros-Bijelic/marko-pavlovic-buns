@@ -44,10 +44,7 @@ export default function ProductsSection() {
                 key={bun.id}
                 className="flex flex-col items-center gap-4 py-8 first:pt-0 sm:gap-6 sm:py-12 md:flex-row md:items-center md:gap-10 md:py-16"
               >
-                <FadeIn
-                  className="flex w-full justify-center md:w-1/2"
-                  //${isLarge ? 'md:w-1/2' : 'md:w-1/2'}
-                >
+                <FadeIn className="flex w-full justify-center md:w-1/2">
                   <div
                     className={`relative w-full bg-white ${
                       isLarge ? 'h-57.5 sm:h-70' : 'h-64'
@@ -63,11 +60,7 @@ export default function ProductsSection() {
                   </div>
                 </FadeIn>
 
-                <FadeIn
-                  delay={100}
-                  className="w-full md:w-1/2"
-                  // ${isLarge ? 'md:w-1/2' : 'md:w-1/2'}
-                >
+                <FadeIn delay={100} className="w-full md:w-1/2">
                   <h3 className="text-2xl font-extrabold tracking-tight text-black uppercase">
                     {bun.title[language]}
                   </h3>
