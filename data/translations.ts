@@ -5,6 +5,9 @@ export const translations: Record<
   {
     nav: {
       toggleAriaLabel: string;
+      products: string;
+      about: string;
+      contact: string;
     };
     about: {
       title: string;
@@ -18,6 +21,8 @@ export const translations: Record<
     };
     products: {
       title: string;
+      tagline: string;
+      subtitle: string;
       note: string;
     };
     contact: {
@@ -39,6 +44,9 @@ export const translations: Record<
   sr: {
     nav: {
       toggleAriaLabel: 'Promeni jezik',
+      products: 'Proizvodi',
+      about: 'O nama',
+      contact: 'Kontakt',
     },
     about: {
       title: 'Šta je Buns.',
@@ -60,6 +68,8 @@ export const translations: Record<
     },
     products: {
       title: 'Proizvodi',
+      tagline: 'više od zemičke',
+      subtitle: 'Premium peciva za burger & sendvič majstore.',
       note: '*Svaki od proizvoda je moguće personalizovati po želji kupca posipom i/ili utisnutim žigom (logom).',
     },
     contact: {
@@ -81,6 +91,9 @@ export const translations: Record<
   en: {
     nav: {
       toggleAriaLabel: 'Toggle language',
+      products: 'Products',
+      about: 'About',
+      contact: 'Contact',
     },
     about: {
       title: 'What is Buns.',
@@ -102,6 +115,8 @@ export const translations: Record<
     },
     products: {
       title: 'Products',
+      tagline: 'beyond the bun',
+      subtitle: 'Premium buns for burger & sandwich craftsmen.',
       note: "*Every product can be personalized to the customer's wishes with toppings and/or an embossed stamp (logo).",
     },
     contact: {
