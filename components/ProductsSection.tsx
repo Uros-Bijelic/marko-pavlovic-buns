@@ -46,7 +46,7 @@ export default function ProductsSection() {
               >
                 <FadeIn className="flex w-full justify-center md:w-1/2">
                   <div
-                    className={`relative w-full  ${bun.makeBunSmaller ? 'w-[78%]' : 'w-full'} bg-white ${
+                    className={`relative ${bun.isSmallerBun ? 'w-[78%]' : 'w-full'} bg-white ${
                       isLarge ? 'h-57.5 sm:h-70' : 'h-64'
                     } ${bun.imageInset ? 'p-6 sm:p-8' : ''}`}
                   >
