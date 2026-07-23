@@ -7,7 +7,7 @@ export type BunProduct = {
   // extra padding to compensate for source photos cropped tighter to the product,
   // which otherwise render larger than other images of the same imageSize
   imageInset?: boolean;
-  makeBunSmaller?: boolean;
+  isSmallerBun?: boolean;
   title: Record<Language, string>;
   subtitle: Record<Language, string>;
   description: Record<Language, string>;
@@ -36,7 +36,7 @@ export const buns: BunProduct[] = [
     image: '/bun.png',
     imageSize: 'md',
     imageInset: true,
-    makeBunSmaller: true,
+    isSmallerBun: true,
     title: {
       sr: 'Potato Bun 85 g',
       en: 'Potato Bun 85 g',
