@@ -32,6 +32,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <LanguageProvider>{children}</LanguageProvider>
         <Toaster
+          position="top-right"
           toastOptions={{
             unstyled: true,
             classNames: {
